@@ -20,7 +20,6 @@ create table if not exists don_hang(
 	ngay_dat 				datetime not null,
 	ngay_giao 				datetime not null,
     tinh_trang_don_hang 	varchar(255) not null,
-    email 					varchar(255) not null,
     da_thanh_toan			bit not null,
     ma_khach_hang 			int not null,
     primary key (ma_don_hang)
@@ -69,7 +68,7 @@ create table if not exists tac_gia(
     
     primary key (ma_tac_gia)
 );
-create table if not exists chi_tiet_tac_gia(
+create table if not exists chi_tiet_tac_gia_sach(
 	ma_tac_gia 		int,
 	ma_sach 		int,
 	vai_tro 		varchar(255) not null,
@@ -79,7 +78,7 @@ create table if not exists chi_tiet_tac_gia(
 );
 -- tao khoa ngoai
 alter table don_hang
-	add constraint fk_ma_khach_hang
+	add constraint fk_don_hang_ma_kh
     foreign key (ma_khach_hang) references khach_hang(ma_khach_hang);
     
 alter table sach
@@ -89,10 +88,10 @@ alter table sach
 	add constraint fk_sach_nxb
     foreign key (ma_nxb) references nha_xuat_ban(ma_nxb); 
     
-alter table chi_tiet_tac_gia
+alter table chi_tiet_tac_gia_sach
 	add constraint fk_tac_gia
     foreign key (ma_tac_gia) references tac_gia(ma_tac_gia);    
-alter table chi_tiet_tac_gia
+alter table chi_tiet_tac_gia_sach
 	add constraint fk_sach
     foreign key (ma_sach) references sach(ma_sach);    
 
