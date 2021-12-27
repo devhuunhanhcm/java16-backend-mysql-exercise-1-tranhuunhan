@@ -4,9 +4,9 @@ use db_QLBanSach;
 
 create table if not exists khach_hang(
 	ma_khach_hang 		int auto_increment,
-	ho_ten 				varchar(255) not null,
-    tai_khoan			varchar(255) not null,
-    mat_khau 			varchar(255) not null,
+	ho_ten 				varchar(100) not null,
+    tai_khoan			varchar(100) not null,
+    mat_khau 			varchar(100) not null,
     email 				varchar(255) not null,
     dia_chi 			varchar(255) not null,
     dien_thoai 			varchar(20) not null,
@@ -79,28 +79,35 @@ create table if not exists chi_tiet_tac_gia_sach(
 -- tao khoa ngoai
 alter table don_hang
 	add constraint fk_don_hang_ma_kh
-    foreign key (ma_khach_hang) references khach_hang(ma_khach_hang);
+    foreign key (ma_khach_hang) 
+    references khach_hang(ma_khach_hang);
     
 alter table sach
 	add constraint fk_sach_chu_de
-    foreign key (ma_chu_de) references chu_de(ma_chu_de);
+    foreign key (ma_chu_de) 
+    references chu_de(ma_chu_de);
 alter table sach
 	add constraint fk_sach_nxb
-    foreign key (ma_nxb) references nha_xuat_ban(ma_nxb); 
+    foreign key (ma_nxb) 
+    references nha_xuat_ban(ma_nxb); 
     
 alter table chi_tiet_tac_gia_sach
 	add constraint fk_tac_gia
-    foreign key (ma_tac_gia) references tac_gia(ma_tac_gia);    
+    foreign key (ma_tac_gia) 
+    references tac_gia(ma_tac_gia);    
 alter table chi_tiet_tac_gia_sach
 	add constraint fk_sach
-    foreign key (ma_sach) references sach(ma_sach);    
+    foreign key (ma_sach) 
+    references sach(ma_sach);    
 
 alter table don_hang_chi_tiet
 	add constraint fk_ma_don_hang
-    foreign key (ma_don_hang) references don_hang(ma_don_hang);    
+    foreign key (ma_don_hang) 
+    references don_hang(ma_don_hang);    
 alter table don_hang_chi_tiet
 	add constraint fk_ma_sach
-    foreign key (ma_sach) references sach(ma_sach);    
+    foreign key (ma_sach) 
+    references sach(ma_sach);    
                                 
 
 
